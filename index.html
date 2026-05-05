@@ -4,113 +4,573 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Privacy Policy – UdhaarBook</title>
-
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet">
   <style>
+    :root {
+      --green-deep:   #064E3B;
+      --green-mid:    #065F46;
+      --green-bright: #059669;
+      --green-light:  #D1FAE5;
+      --green-xlight: #ECFDF5;
+      --gold:         #F59E0B;
+      --gold-light:   #FEF3C7;
+      --ink:          #0F172A;
+      --ink-mid:      #334155;
+      --ink-soft:     #64748B;
+      --ink-muted:    #94A3B8;
+      --border:       #E2E8F0;
+      --bg:           #F8FAFC;
+      --white:        #FFFFFF;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
     body {
-      font-family: system-ui, -apple-system, Arial, sans-serif;
-      background: #f9fafb;
-      color: #111827;
-      margin: 0;
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+    }
+
+    /* ── HEADER ── */
+    .header {
+      background: var(--green-deep);
+      position: relative;
+      overflow: hidden;
       padding: 0;
     }
 
-    .container {
-      max-width: 800px;
-      margin: auto;
-      padding: 24px;
+    .header-noise {
+      position: absolute;
+      inset: 0;
+      background-image:
+        radial-gradient(ellipse 80% 60% at 70% -10%, rgba(5,150,105,0.45) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 80% at -10% 80%, rgba(6,78,59,0.6) 0%, transparent 60%);
     }
 
-    h1 {
-      font-size: 28px;
+    .header-grid {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+      background-size: 40px 40px;
+    }
+
+    .header-inner {
+      position: relative;
+      max-width: 800px;
+      margin: auto;
+      padding: 36px 24px 40px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .logo-wrap {
+      width: 52px;
+      height: 52px;
+      flex-shrink: 0;
+      filter: drop-shadow(0 4px 12px rgba(0,0,0,0.3));
+    }
+
+    .header-text { flex: 1; }
+
+    .brand-name {
+      font-family: 'Instrument Serif', serif;
+      font-size: 26px;
+      font-weight: 400;
+      color: white;
+      letter-spacing: -0.2px;
+      line-height: 1.1;
+    }
+
+    .brand-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      margin-top: 6px;
+      background: rgba(245,158,11,0.15);
+      border: 1px solid rgba(245,158,11,0.3);
+      border-radius: 20px;
+      padding: 3px 10px;
+      font-size: 10.5px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #FCD34D;
+    }
+
+    .brand-pill::before {
+      content: '';
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: #FCD34D;
+      opacity: 0.8;
+    }
+
+    /* ── CONTAINER ── */
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 16px 60px;
+    }
+
+    /* ── META BAR ── */
+    .meta-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 0 0;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .meta-updated {
+      font-size: 12.5px;
+      color: var(--ink-muted);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .meta-updated::before {
+      content: '';
+      display: inline-block;
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--green-bright);
+    }
+
+    .meta-badge {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      color: var(--green-mid);
+      background: var(--green-xlight);
+      border: 1px solid var(--green-light);
+      border-radius: 6px;
+      padding: 3px 10px;
+    }
+
+    /* ── INTRO CARD ── */
+    .intro-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 28px 32px;
+      margin-bottom: 6px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 4px 16px rgba(0,0,0,0.04);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .intro-card::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 4px;
+      background: linear-gradient(180deg, var(--green-bright), var(--green-deep));
+      border-radius: 4px 0 0 4px;
+    }
+
+    .intro-title {
+      font-family: 'Instrument Serif', serif;
+      font-size: 32px;
+      font-weight: 400;
+      color: var(--green-deep);
+      letter-spacing: -0.5px;
+      line-height: 1.2;
+      margin-bottom: 12px;
+    }
+
+    .intro-text {
+      font-size: 14.5px;
+      color: var(--ink-mid);
+      line-height: 1.75;
+      max-width: 600px;
+    }
+
+    /* ── SECTIONS LAYOUT ── */
+    .sections-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6px;
+      margin-top: 6px;
+    }
+
+    .section-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 24px 26px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+      transition: box-shadow 0.2s, border-color 0.2s, transform 0.2s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .section-card:hover {
+      box-shadow: 0 4px 20px rgba(6,95,70,0.1);
+      border-color: rgba(5,150,105,0.25);
+      transform: translateY(-1px);
+    }
+
+    /* full-width cards */
+    .section-card.full { grid-column: 1 / -1; }
+
+    .section-card-accent {
+      position: absolute;
+      top: 0; right: 0;
+      width: 80px; height: 80px;
+      border-radius: 0 14px 0 80px;
+      background: var(--green-xlight);
+      opacity: 0.6;
+    }
+
+    .section-num {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ink-muted);
       margin-bottom: 10px;
     }
 
-    h2 {
-      margin-top: 24px;
-      font-size: 18px;
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 14px;
     }
 
-    p {
-      line-height: 1.6;
-      margin: 10px 0;
+    .section-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      background: var(--green-xlight);
+      border: 1px solid var(--green-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      flex-shrink: 0;
     }
 
-    ul {
-      padding-left: 20px;
-      margin: 10px 0;
+    .section-title {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--ink);
+      letter-spacing: -0.1px;
     }
 
-    li {
-      margin-bottom: 6px;
+    .section-body {
+      font-size: 13.5px;
+      color: var(--ink-soft);
+      line-height: 1.75;
     }
 
+    .section-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .section-list li {
+      font-size: 13.5px;
+      color: var(--ink-soft);
+      line-height: 1.65;
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+    }
+
+    .section-list li::before {
+      content: '';
+      display: block;
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--green-bright);
+      margin-top: 7px;
+      flex-shrink: 0;
+    }
+
+    /* ── CONTACT SECTION ── */
+    .contact-section {
+      margin-top: 6px;
+      background: linear-gradient(135deg, var(--green-deep) 0%, var(--green-mid) 100%);
+      border-radius: 16px;
+      padding: 32px 36px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .contact-section::after {
+      content: '';
+      position: absolute;
+      bottom: -30px; right: -30px;
+      width: 140px; height: 140px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.05);
+    }
+
+    .contact-section::before {
+      content: '';
+      position: absolute;
+      top: -20px; left: 40%;
+      width: 100px; height: 100px;
+      border-radius: 50%;
+      background: rgba(5,150,105,0.3);
+    }
+
+    .contact-inner { position: relative; display: flex; align-items: center; gap: 24px; flex-wrap: wrap; }
+
+    .contact-icon-wrap {
+      width: 52px; height: 52px;
+      border-radius: 14px;
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.15);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 24px; flex-shrink: 0;
+    }
+
+    .contact-text { flex: 1; }
+    .contact-title {
+      font-family: 'Instrument Serif', serif;
+      font-size: 20px;
+      color: white;
+      margin-bottom: 4px;
+    }
+
+    .contact-desc {
+      font-size: 13px;
+      color: rgba(255,255,255,0.65);
+      margin-bottom: 12px;
+    }
+
+    .contact-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.2);
+      color: white;
+      text-decoration: none;
+      padding: 9px 18px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 500;
+      transition: background 0.2s;
+    }
+    .contact-link:hover { background: rgba(255,255,255,0.2); }
+
+    /* ── FOOTER ── */
     .footer {
-      margin-top: 40px;
-      font-size: 14px;
-      color: #6b7280;
+      margin-top: 32px;
+      text-align: center;
+      font-size: 12.5px;
+      color: var(--ink-muted);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      justify-content: center;
+      align-items: center;
     }
+
+    .footer a {
+      color: var(--ink-soft);
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+
+    .footer a:hover { color: var(--green-mid); }
+    .footer-dot { color: var(--border); font-size: 16px; line-height: 1; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 600px) {
+      .sections-grid { grid-template-columns: 1fr; }
+      .section-card.full { grid-column: auto; }
+      .intro-card { padding: 22px 20px; }
+      .intro-title { font-size: 26px; }
+      .contact-section { padding: 24px 20px; }
+      .header-inner { padding: 28px 16px 32px; }
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(14px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .intro-card { animation: fadeUp 0.4s ease both; }
+    .section-card:nth-child(1) { animation: fadeUp 0.4s 0.05s ease both; }
+    .section-card:nth-child(2) { animation: fadeUp 0.4s 0.10s ease both; }
+    .section-card:nth-child(3) { animation: fadeUp 0.4s 0.15s ease both; }
+    .section-card:nth-child(4) { animation: fadeUp 0.4s 0.20s ease both; }
+    .section-card:nth-child(5) { animation: fadeUp 0.4s 0.25s ease both; }
+    .section-card:nth-child(6) { animation: fadeUp 0.4s 0.30s ease both; }
+    .section-card:nth-child(7) { animation: fadeUp 0.4s 0.35s ease both; }
+    .contact-section { animation: fadeUp 0.4s 0.4s ease both; }
   </style>
 </head>
-
 <body>
+
+  <header class="header">
+    <div class="header-noise"></div>
+    <div class="header-grid"></div>
+    <div class="header-inner">
+      <svg class="logo-wrap" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="bg" x1="0" y1="0" x2="512" y2="512" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stop-color="#065F46"/><stop offset="100%" stop-color="#047857"/>
+          </linearGradient>
+          <linearGradient id="spine" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#F5C842"/><stop offset="100%" stop-color="#C89B2A"/>
+          </linearGradient>
+        </defs>
+        <rect width="512" height="512" rx="108" fill="url(#bg)"/>
+        <rect x="54" y="108" width="186" height="288" rx="14" fill="white" fill-opacity="0.09"/>
+        <rect x="272" y="108" width="186" height="288" rx="14" fill="white" fill-opacity="0.09"/>
+        <rect x="245" y="88" width="22" height="328" rx="11" fill="url(#spine)"/>
+        <rect x="80" y="188" width="136" height="14" rx="7" fill="white" fill-opacity="0.55"/>
+        <rect x="80" y="228" width="108" height="14" rx="7" fill="white" fill-opacity="0.38"/>
+        <rect x="80" y="268" width="124" height="14" rx="7" fill="white" fill-opacity="0.30"/>
+        <rect x="80" y="308" width="92" height="14" rx="7" fill="white" fill-opacity="0.22"/>
+        <rect x="80" y="344" width="60" height="6" rx="3" fill="#F5C842" fill-opacity="0.7"/>
+        <text x="365" y="306" text-anchor="middle" dominant-baseline="middle" fill="white" font-size="196" font-weight="800" font-family="-apple-system, Helvetica Neue, Arial, sans-serif" letter-spacing="-4">₹</text>
+      </svg>
+      <div class="header-text">
+        <div class="brand-name">UdhaarBook</div>
+        <div class="brand-pill">Privacy Policy</div>
+      </div>
+    </div>
+  </header>
+
   <div class="container">
 
-    <h1>Privacy Policy – UdhaarBook</h1>
-    <p><strong>Last updated:</strong> May 2026</p>
+    <div class="meta-bar">
+      <span class="meta-updated">Last updated: May 2026</span>
+      <span class="meta-badge">Version 1.0</span>
+    </div>
 
-    <p>
-      UdhaarBook ("we", "our", "app") helps users track personal financial transactions.
-      This Privacy Policy explains what data we collect, how we use it, and your rights.
-    </p>
+    <!-- INTRO -->
+    <div class="intro-card">
+      <h1 class="intro-title">Your Privacy Matters</h1>
+      <p class="intro-text">UdhaarBook ("we", "our", "app") helps users track personal financial transactions. This Privacy Policy explains what data we collect, how we use it, and your rights.</p>
+    </div>
 
-    <h2>1. Information We Collect</h2>
-    <ul>
-      <li>Name and phone number of contacts you add</li>
-      <li>Transaction data (amounts, dates, notes)</li>
-      <li>Account-related data (balances, history)</li>
-      <li>Email address for authentication</li>
-    </ul>
+    <!-- SECTIONS GRID -->
+    <div class="sections-grid">
 
-    <h2>2. How We Use Information</h2>
-    <ul>
-      <li>To display and manage your ledger</li>
-      <li>To calculate balances and summaries</li>
-      <li>To send reminders (if enabled)</li>
-    </ul>
+      <!-- 1 -->
+      <div class="section-card full">
+        <div class="section-card-accent"></div>
+        <div class="section-num">01</div>
+        <div class="section-header">
+          <div class="section-icon">📋</div>
+          <div class="section-title">Information We Collect</div>
+        </div>
+        <ul class="section-list">
+          <li>Name and phone number of contacts you add</li>
+          <li>Transaction data (amounts, dates, notes)</li>
+          <li>Account-related data (balances, history)</li>
+          <li>Email address for authentication</li>
+        </ul>
+      </div>
 
-    <h2>3. Data Storage</h2>
-    <p>
-      Your data is stored securely in our database. We do not sell or share your data with third parties.
-    </p>
+      <!-- 2 -->
+      <div class="section-card">
+        <div class="section-num">02</div>
+        <div class="section-header">
+          <div class="section-icon">⚙️</div>
+          <div class="section-title">How We Use Information</div>
+        </div>
+        <ul class="section-list">
+          <li>To display and manage your ledger</li>
+          <li>To calculate balances and summaries</li>
+          <li>To send reminders (if enabled)</li>
+        </ul>
+      </div>
 
-    <h2>4. Third-Party Services</h2>
-    <p>
-      We may use services like Google Sign-In for authentication and secure backend infrastructure for storage.
-    </p>
+      <!-- 3 -->
+      <div class="section-card">
+        <div class="section-num">03</div>
+        <div class="section-header">
+          <div class="section-icon">🗄️</div>
+          <div class="section-title">Data Storage</div>
+        </div>
+        <p class="section-body">Your data is stored securely in our database. We do not sell or share your data with third parties.</p>
+      </div>
 
-    <h2>5. Data Retention</h2>
-    <p>
-      Your data is stored until you delete your account.
-    </p>
+      <!-- 4 -->
+      <div class="section-card">
+        <div class="section-num">04</div>
+        <div class="section-header">
+          <div class="section-icon">🔗</div>
+          <div class="section-title">Third-Party Services</div>
+        </div>
+        <p class="section-body">We use services like Google Sign-In for authentication and secure backend infrastructure for storage.</p>
+      </div>
 
-    <h2>6. Account Deletion</h2>
-    <p>
-      You can delete your account inside the app. All associated data will be permanently removed.
-    </p>
+      <!-- 5 -->
+      <div class="section-card">
+        <div class="section-num">05</div>
+        <div class="section-header">
+          <div class="section-icon">🕐</div>
+          <div class="section-title">Data Retention</div>
+        </div>
+        <p class="section-body">Your data is stored until you delete your account.</p>
+      </div>
 
-    <h2>7. Security</h2>
-    <p>
-      We take reasonable steps to protect your data.
-    </p>
+      <!-- 6 -->
+      <div class="section-card">
+        <div class="section-num">06</div>
+        <div class="section-header">
+          <div class="section-icon">🗑️</div>
+          <div class="section-title">Account Deletion</div>
+        </div>
+        <p class="section-body">You can delete your account inside the app or by emailing us. All associated data will be permanently removed within 7 days.</p>
+      </div>
 
-    <h2>8. Contact</h2>
-    <p>
-      If you have any questions:
-      <br><strong>Email:</strong> neerajpallikonda433@gmail.com
-    </p>
+      <!-- 7 -->
+      <div class="section-card full">
+        <div class="section-num">07</div>
+        <div class="section-header">
+          <div class="section-icon">🔒</div>
+          <div class="section-title">Security</div>
+        </div>
+        <p class="section-body">We take reasonable steps to protect your data using industry-standard security practices.</p>
+      </div>
+
+    </div>
+
+    <!-- CONTACT -->
+    <div class="contact-section">
+      <div class="contact-inner">
+        <div class="contact-icon-wrap">✉️</div>
+        <div class="contact-text">
+          <div class="contact-title">Questions about this policy?</div>
+          <p class="contact-desc">If you have any questions about this Privacy Policy, reach out to UdhaarBook Support.</p>
+          <a class="contact-link" href="mailto:neerajpallikonda433@gmail.com">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+            neerajpallikonda433@gmail.com
+          </a>
+        </div>
+      </div>
+    </div>
 
     <div class="footer">
-      © 2026 UdhaarBook
+      <span>© 2026 UdhaarBook</span>
+      <span class="footer-dot">·</span>
+      <a href="terms.html">Terms &amp; Conditions</a>
+      <span class="footer-dot">·</span>
+      <a href="mailto:neerajpallikonda433@gmail.com">Contact</a>
     </div>
 
   </div>
